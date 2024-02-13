@@ -1,7 +1,7 @@
 from docker.io/library/golang:1.20.6-bookworm
 workdir /src
 copy . .
-run go build .
+run go build -o gcshell cmd/gcshell/main.go
 
 from docker.io/library/debian:12.1
 arg SNX_URL

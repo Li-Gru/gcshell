@@ -5,14 +5,16 @@ import (
 )
 
 type Config struct {
-	Selector string
-	Pkcs11Id string
-	Pkcs11Lib  string
-	Pkcs11Pin  string
-	SnxGateway string
-	SnxPrefix string
-	SnxRealm  string
-	SnxPath   string
+	Selector    string
+	Pkcs11Id    string
+	Pkcs11Lib   string
+	Pkcs11Pin   string
+	SnxGateway  string
+	SnxPrefix   string
+	SnxRealm    string
+	SnxPath     string
+	FingerPrint string
+	ExtenderUrl string
 }
 
 func defaultString(key string, val string) string {
@@ -34,7 +36,8 @@ func (c *Config) fromEnv() {
 	c.SnxPrefix = os.Getenv("CSHELL_SNX_PREFIX")
 	c.SnxRealm = os.Getenv("CSHELL_SNX_REALM")
 	c.SnxPath = os.Getenv("CSHELL_SNX_PATH")
-
+	c.FingerPrint = os.Getenv("CSHELL_SNX_FINGERPRINT")
+	c.ExtenderUrl = os.Getenv("CSHELL_EXTENDER_URL")
 }
 
 func (c *Config) defaults() {

@@ -30,7 +30,7 @@ func (e *Extender) Init(certificate tls.Certificate) *Extender {
 	return e
 }
 
-func (e *Extender) GetParams(host string, prefix string, realm string) *map[string]string {
+func (e *Extender) GetParams(host string, prefix string, realm string) (*map[string]string, error) {
 	var url string
 	url = fmt.Sprintf("https://%s%s/Login/LoginWithCert?selectedRealm=%s", host, prefix, realm)
 	resp, err := e.client.Get(url)
@@ -55,5 +55,5 @@ func (e *Extender) GetParams(host string, prefix string, realm string) *map[stri
 
 		}
 	}
-	return &params
+	return &params, nil
 }
